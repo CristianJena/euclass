@@ -129,7 +129,7 @@ func run(log *zap.SugaredLogger) error {
 	shutdown := make(chan os.Signal, 1)
 	signal.Notify(shutdown, syscall.SIGINT, syscall.SIGTERM)
 
-	apiMux := handlers.APIMux()
+	apiMux := handlers.APIMux(log)
 
 	// Construct a server to service the requests against the mux.
 	api := http.Server{
