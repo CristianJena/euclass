@@ -2,15 +2,16 @@
 package testgrp
 
 import (
+	"context"
 	"encoding/json"
 	"net/http"
 )
 
-func Handler(w http.ResponseWriter, r *http.Request) {
+func Handler(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
 	status := struct {
 		Status string
 	}{
 		Status: "OK",
 	}
-	json.NewEncoder(w).Encode(status)
+	return json.NewEncoder(w).Encode(status)
 }
